@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>GitHub Bootcamp</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/simple.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+
+</head>
+
+<body>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .center-box {
+            flex-flow: column;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .reveal .text-center p {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .overflow {
+            overflow: auto;
+            width: 100%;
+            /* Takes up the whole width of the slide */
+            height: 400px;
+            /* 100% doesn't work here, 400px seems to work well with almost every resolution. */
+        }
+    </style>
+
+    <div class="reveal">
+        <div class="slides">
+            <section style="position: relative;">
+                <h1 style="color: black;">GitHub Bootcamp</h1>
+                <h3 style="color: black;">By Abhilash Dikshit</h3>
+                <img src="assets/github-logo.png" alt="GitHub Logo" style="opacity: 0.7; width: 50%; box-shadow: none; border: none;"/>
+                <span class="logo" style="position: absolute; top: 0; right: 0;">
+                    <img src="assets/formal.png" alt="" width="150" height="140" style="box-shadow: none; border: none;" />
+                </span>
+            </section>
+            
+ 
+            <section>
+                <h2 style="color: black;">What is Git?</h2>
+                <center style="padding-top: 10px;">
+                    <img data-src="./assets/git-scm-website-ss.png" style="max-width: 500px;">
+                </center>
+                <div class="container">
+                    <div class="center-box">
+                        <p>
+                        <h3 class="fragment" style="color: black;">Key Features:</h3>
+                        <ul class="fragment">
+                            <li><strong>Distributed: </strong>Every user has a complete copy of the repository, enabling offline work and decentralized collaboration.</li>
+                            <li><strong>Version Control: </strong>Tracks changes to files over time, allowing users to revert to previous versions if needed.</li>
+                            <li><strong>Branching and Merging: </strong>Enables developers to work on separate features or fixes in parallel branches and merge them back into the main codebase.</li>
+                            <li><strong>Collaboration:</strong>Facilitates team collaboration through features like pull requests, code reviews, and conflict resolution.</li>
+                        </ul>
+                        </p>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="color: black;">How to Install Git?</h2>
+                <div class="container">
+                    <div class="col">
+                        <h3 style="color: black;">Windows</h3>
+                        <p>
+                        <ol>
+                            <li>Download from <a href="https://git-scm.com">git-scm.com</a></li>
+                            <li>Launch the installer and select default options</li>
+                        </ol>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h3 style="color: black;">Mac</h3>
+                        <p>
+                        <ol>
+                            <li>Install <a href="https://brew.sh">homebrew</a></li>
+                            <li>Install git <br />
+                                <pre><code data-trim style="font-size: smaller;">brew install git</code></pre>
+                            </li>                           
+                        </ol>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h3 style="color: black;">Linux</h3>
+                        <p>
+                        <ul>
+                            <li>Install using <a>the package manager specific to your distribution</a></li>
+                            <li>Examples:</li>
+                            <pre>
+                                <code data-trim style="font-size: smaller;">
+                                    apt-get install git
+                                    pacman -S git
+                                    yum install git
+                                </code>
+                            </pre>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <img src="assets/git_gif.gif" alt="" width="160" height="150" style="box-shadow: none; border: none; opacity: 0.7;" />
+            </section>
+
+            <section>
+                <h2 style="color: black;">How to configure Git?</h2>
+                <div class="center-box">
+                    <p>With git now installed, we'll need to execute some commands to configure it.</p>
+                    <pre><code data-trim>
+						git config --global user.name "Your Username Here"
+						git config --global user.email "your@email.here"
+					</code></pre>
+                    <br />
+                    <p>To maintain the privacy of your personal email, you can 
+                        <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address" 
+                        target="_blank" rel="noreferrer noopener">utilize your GitHub email address for commits instead.</a>
+                    </p>
+                </div>
+                <!-- <img src="assets/git_config.png" alt="" width="650" height="400" style="box-shadow: none; border: none; opacity: 0.7;" /> -->
+                <figure>
+                    <img src="./assets/git_config.png" alt="" width="650" height="400" style="box-shadow: none; border: none; opacity: 0.7;" />
+                    <figcaption style="font-size: smaller;">
+                        Image sourced from <a href="https://www.gitkraken.com/learn/git/git-config" target="_blank" rel="noopener noreferrer">GitKraken</a>
+                    </figcaption>
+                </figure>
+                
+            </section>
+
+            <section>
+                <h2 style="color: black;">How do we use Git?</h2>
+                <div class="container">
+                    <div class="col">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">
+                                For a new project, the initial step is to inform git that we intend to track files.
+                                <pre><code data-trim>git init</code></pre>
+                            </li>
+                            <li class="fragment" data-fragment-index="2">
+                                Now, check the files in the folder that need to be committed.
+                                <pre><code>git status</code></pre>
+                            </li>
+                        </ul>
+                        <p class="fragment" data-fragment-index="4" style="text-align: center;">When you run <em>git status</em>, Git will show you:
+                            <ul>
+                                <li class="fragment" data-fragment-index="4">Current branch you are on.</li>
+                                <li class="fragment" data-fragment-index="4">Staged changes (ready for commit).</li>
+                                <li class="fragment" data-fragment-index="4">Unstaged changes (tracked but not staged).</li>
+                                <li class="fragment" data-fragment-index="4">Untracked files (not tracked by Git).</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </section>         
+
+            <section>
+                <h2 style="color: black;">Let's run <code>git commit</code> now</h2>
+                <div class="text-center">
+                    <p>Committing a file is like saving a snapshot of the current code in Git's history.
+                    </p>
+                </div>
+                <p>
+                <ol>
+                    <li>Add the files to our staging area for committing.
+                        <br />
+                        To add all files:
+                        <pre><code>git add .</code></pre>
+                        To add specific files:
+                        <pre><code>git add github_bootcamp.html</code></pre>
+                    </li>
+                    <br />
+                    <li>Now, let's write our commit message to explain the changes.
+                        <br />
+                        <pre><code>git commit -m "Title" -m "Description"</code></pre>
+                    </li>
+                </ol>
+                </p>
+                <h2 style="color: black;">What happens when we <code>git commit</code>?</h2>
+                <div class="text-center">
+                    <ul>
+                        <li>The staged changes are saved to the Git repository.</li>
+                        <li>A commit message describing the changes is added.</li>
+                    </ul>
+                </div>
+            </section>   
+            
+            <section>
+                <h2 style="color: black;">What is <code>git branch</code>?</h2>
+                <div class="center-box">
+                    <p>
+                        <ul>
+                            <li>In Git, a branch represents a unique set of code changes identified by a distinct name.</li>
+                            <li>The default branch when starting a project is typically named main or master.</li>
+                            <li>Branching allows developers to experiment with new features or fixes without impacting the main codebase.</li>
+                            <li>You can create a new branch, implement changes within it, and later choose to merge those changes back into the primary branch.</li>
+                         </ul>
+                    </p>
+                </div>
+            </section>
+
+            <style>
+                .flex-container {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                
+                .flex-container ol {
+                    flex: 1;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 18px; /* Decreased font size */
+                }
+                
+                .flex-container ol li {
+                    margin-bottom: 15px;
+                }
+            </style>
+            
+            <section>
+                <h2 style="color: black;">How does <code>git branch</code> work?</h2>
+                <div class="container">
+                    <div class="center-box">
+                        <div class="fragment">
+                            <h3 style="color: black;">The git branch command is used to manage branches in Git. Here's how it works:</h3>     
+                            <div class="flex-container">
+                                <ol>
+                                    <li>View Branches:
+                                        <br />
+                                        To see a list of all branches in your repository:
+                                        <pre><code>git branch</code></pre>
+                                    </li>
+                                    <li>Create a Branch:
+                                        <br />
+                                        To create a new branch:
+                                        <pre><code>git branch new-feature</code></pre>
+                                    </li>
+                                    <li>Switch to a Branch:
+                                        <br />
+                                        To switch to an existing branch:
+                                        <pre><code>git checkout branch-name</code></pre>
+                                    </li>
+                                    <li>Create a Branch:
+                                        <br />
+                                        To create a new branch:
+                                        <pre><code>git branch new-feature</code></pre>
+                                        Alternatively, you can use:
+                                        <pre><code>git switch branch-name</code></pre>
+                                    </li>
+                                </ol>
+                                <ol start="5">
+                                    <li>Create and Switch to a New Branch:
+                                        <br />
+                                        To create and switch to a new branch in one step:
+                                        <pre><code>git checkout -b new-feature</code></pre>
+                                        Or using:
+                                        <pre><code>git switch -c new-feature</code></pre>
+                                    </li>
+                                    <li>Merge Changes:
+                                        <br />
+                                        Once you've made changes in a branch and want to merge those changes back into the main branch:
+                                        <pre><code>git checkout main</code></pre>
+                                        <pre><code>git merge branch-name</code></pre>
+                                    </li>
+                                    <li>Pushing a Branch to a Remote Repository:
+                                        <br />
+                                        To push a new branch to a remote repository:
+                                        <pre><code>git push -u origin new-feature</code></pre>
+                                    </li>
+                                    <li>Delete a Branch:
+                                        <br />
+                                        To delete a branch (only if it has been merged):
+                                        <pre><code>git branch -d branch-name</code></pre>
+                                        To forcefully delete a branch (even if it has unmerged changes):
+                                        <pre><code>git branch -D branch-name</code></pre>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>                     
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="color: black;">Branching Strategies</h2>
+                <div class="center-box">
+                    <p>A "branching strategy" outlines how a software team manages code writing, merging, and deployment using a version control system like Git. It aims to facilitate efficient collaboration among developers sharing the same codebase, ensuring concurrent development without conflicts.</p>
+                    <br />
+                    <div class="col text-left">
+                        <ul>
+                            <li class="fragment">
+                                <strong>Trunks</strong><br/>
+                                <p style="text-align: left;">
+                                    If an individual typically works on features on their own, they can utilize their dedicated "trunk" branch. 
+                                    This branch will hold the code related to the feature they are currently developing.
+                                    Such an approach is suitable for those who tend to work on features one after the other.
+                                </p>
+                            </li>
+                            <br />
+                            <li class="fragment">
+                                <strong>Feature Branches</strong><br/>
+                                <p style="text-align: left;">
+                                    Every new feature has its individual branch! Developers can alternate between branches to handle various features.
+                                    Even several individuals can collaborate on a single feature by using the same branch.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="color: black;">Working with Git & GitHub</h2>
+                <center>
+                    <p>
+                        You know how to work with git locally and you have GitHub setup. Let's work with them together.<br/>
+                        My tool of choice is GitHub Desktop. It has an amazing UI and makes it easy to manage multiple branches <strong>and</strong> Pull Requests.
+                    </p>
+                </center>
+                <div class="container">
+                    <div class="col">
+                        <div class="center-box">
+                            <h3 style="color: black;">Command Line Usage</h3>
+                            <div class="fragment">
+                            <p>
+                                We have changes we made locally that we want to push to GitHub so others can review it.
+                                <ul>
+                                    <li>Let's <code>push</code> to GitHub</li>
+                                    <pre><code data-trim>git push &lt;remote&gt; &lt;branch&gt;</code></pre>
+                                    <li>Typing that URL each time is going to get annoying, let's add it as a remote alias</li>
+                                    <pre><code data-trim>git remote add &lt;name&gt; &lt;url&gt;</code></pre>
+                                </ul>
+                            </p>
+                            </div>
+                            <div class="fragment">
+                            <p>
+                                Someone made changes to the repository, let's <code>pull</code> down those changes so we can view it locally.
+                                <ul>
+                                    <li>The person who m ade the changes needs to <code>push</code> it to GitHub</li>
+                                    <li>We can <code>pull</code> down the changes to our local machine</li>
+                                    <pre><code data-trim>git pull &lt;remote&gt; &lt;branch&gt;</code></pre>
+                                </ul>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img class="current-visible" src="./assets/github_diagram_1.jpg">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="color: black;">Other ways to use GitHub</h2>
+                <div class="center-box">
+                    <p>
+                        <ul>
+                            <li><a href="https://desktop.github.com/" target="_blank" rel="noreferrer noopener">GitHub Desktop</a></li>
+                            <li><a href="https://www.gitkraken.com/" target="_blank" rel="noreferrer noopener">GitKraken</a></li>
+                            <li><a href="https://code.visualstudio.com/docs/editor/versioncontrol#_git-support" target="_blank" rel="noreferrer noopener">VSCode with Git</a></li>
+                            <li><a href="https://www.jetbrains.com/help/pycharm/version-control-integration.html" target="_blank" rel="noreferrer noopener">PyCharm with Git</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </section>
+                       
+
+            <section>
+                <h2 style="color: black;">Additional Resources & Reading</h2>
+                <section>
+                    <h3 style="color: black;">Guides</h3>
+                    <div class="center-box">
+                    <p>
+                        <ul>
+                            <li><a href="https://medium.com/geekculture/git-and-github-for-dummies-35cfcbb28084" target="_blank" rel="noreferrer noopener">Git & GitHub for Dummies</a> - Get you up and running with Git & GitHub</li>
+                            
+                            <li><a href="https://www.freecodecamp.org/news/git-and-github-crash-course/" target="_blank" rel="noreferrer noopener">Git & GitHub Crash Course Video - FreeCodeCamp</a> - Video Crash Course for Git & GitHub</li>
+                            <li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/pr01.html" target="_blank" rel="noreferrer noopener">Git is Magic</a> - A very in-depth guide</li>
+                            <li><a href="http://justinhileman.info/article/git-pretty/full/" target="_blank" rel="noreferrer noopener">Oh no, I have a git mess</a> - A flowchart to get you out of even the trickiest of git messes</li>
+                            <li><a href="https://ohshitgit.com/" target="_blank" rel="noreferrer noopener">Oh shit git</a> - If you made a mistake, this will tell you how to fix it</li>
+                            <li><a href="https://cbea.ms/git-commit/" target="_blank" rel="noreferrer noopener">How to Write a Git Commit Message</a> - How to write good Git commit messages for future you and your teammates/coworkers</li>
+                        </ul>
+                    </p>
+                    </div>
+                </section>
+                <section>
+                    <h3 style="color: black;">Interactive Resources</h3>
+                    <div class="center-box">
+                    <p>
+                        <ul>
+                            <li><a href="https://blinry.itch.io/oh-my-git" target="_blank" rel="noreferrer noopener">Oh my git</a> - a game to learn Git</li>
+                            <li><a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer noopener">Learn Git Branching</a></li>
+                        </ul>
+                    </p>
+                    </div>
+                </section>
+                <section>
+                    <h3 style="color: black;">Further Reading & Cheatsheets</h3>
+                    <div class="center-box">
+                    <p>
+                        <ul>
+                            <li><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing" target="_blank" rel="noreferrer noopener">Merging vs Rebasing</a> - What's the difference and which should I do?</li>
+                            <li><a href="https://www.freecodecamp.org/news/git-fetch-vs-pull/" target="_blank" rel="noreferrer noopener">git fetch vs git pull</a> - What's the difference between the two? Read to find out!</li>
+                            <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" rel="noreferrer noopener">GitHub Education Git Cheatsheet</a></li>
+                            <li><a href="https://www.jrebel.com/blog/git-cheat-sheet" target="_blank" rel="noreferrer noopener">Rebel Labs Cheatsheet</a></li>
+                        </ul>
+                    </p>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
